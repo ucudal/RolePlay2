@@ -7,6 +7,9 @@ namespace RoleplayGame
         public Dwarf(string name)
         {
             this.Name = name;
+            this.Axe = new Axe();
+            this.Shield = new Shield();
+            this.Helmet = new Helmet();
         }
 
         public string Name { get; set; }

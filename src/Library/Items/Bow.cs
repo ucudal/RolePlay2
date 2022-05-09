@@ -1,6 +1,6 @@
 namespace RoleplayGame
 {
-    public class Bow
+    public class Bow: IItem
     {
         public int AttackValue 
         {
@@ -8,6 +8,14 @@ namespace RoleplayGame
             {
                 return 15;
             } 
+        }
+
+        public int DefenseValue
+        {
+            get
+            {
+                return 0;
+            }
         }
     }
 }
