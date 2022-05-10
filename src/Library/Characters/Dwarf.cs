@@ -1,6 +1,6 @@
 namespace RoleplayGame
 {
-    public class Dwarf
+    public class Dwarf : ICharacter
     {
         private int health = 100;
 
@@ -48,11 +48,11 @@ namespace RoleplayGame
             }
         }
 
-        public void ReceiveAttack(int power)
+        public void RecieveAttack(ICharacter attacker)
         {
-            if (this.DefenseValue < power)
+            if (this.DefenseValue < attacker.AttackValue)
             {
-                this.Health -= power - this.DefenseValue;
+                this.Health -= attacker.AttackValue - this.DefenseValue;
             }
         }
 
