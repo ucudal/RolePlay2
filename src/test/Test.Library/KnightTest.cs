@@ -41,5 +41,31 @@ namespace Test.Library
             int expected = 39;
             Assert.AreEqual(expected,defense);
         }
+
+        /*[Test]
+
+        public void KnightAttackedByArcher()
+        {
+            Knight TestKnight = new Knight("Test");
+            IItem sword = new Sword();
+            IItem shield = new Shield();
+            IItem armor = new Armor();
+            Archer TestArcher = new Archer("Test");
+            IItem bow = new Bow();
+            IItem helmet = new Helmet();
+            TestKnight.ReceiveAttack(TestArcher.AttackValue);
+
+        }*/
+
+        [Test]
+
+        public void CureKnight()
+        {
+            Knight TestKnight = new Knight("Test");
+            IItem sword = new Sword();
+            IItem shield = new Shield();
+            IItem armor = new Armor();
+            TestKnight.Cure();
+        }
     }
 }
