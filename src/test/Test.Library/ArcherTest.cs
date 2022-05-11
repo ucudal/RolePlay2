@@ -31,7 +31,7 @@ namespace Test.Library
 
         [Test]
 
-        public void KnightDefense()
+        public void ArcherDefense()
         {
             Archer TestArcher = new Archer("Test");
             IItem bow = new Bow();
