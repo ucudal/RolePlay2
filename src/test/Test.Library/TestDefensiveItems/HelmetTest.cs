@@ -25,5 +25,6 @@ namespace Test.Library
             IItem item = new Helmet();
             Assert.AreEqual(18, item.DefenseValue);
         }
+        
     }
 }
