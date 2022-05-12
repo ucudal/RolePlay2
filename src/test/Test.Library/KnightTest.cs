@@ -53,8 +53,8 @@ namespace Test.Library
             Archer TestArcher = new Archer("Test");
             IItem bow = new Bow();
             TestArcher.Bow = new Bow();
-            //IItem helmet = new Helmet();
-            TestKnight.ReceiveAttack(TestArcher.AttackValue);
+            IItem helmet = new Helmet();
+            TestKnight.ReceiveAttack(TestArcher);
 
         }
 
