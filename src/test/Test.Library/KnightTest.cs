@@ -42,7 +42,7 @@ namespace Test.Library
             Assert.AreEqual(expected,defense);
         }
 
-        /*[Test]
+        [Test]
 
         public void KnightAttackedByArcher()
         {
@@ -52,10 +52,11 @@ namespace Test.Library
             IItem armor = new Armor();
             Archer TestArcher = new Archer("Test");
             IItem bow = new Bow();
-            IItem helmet = new Helmet();
+            TestArcher.Bow = new Bow();
+            //IItem helmet = new Helmet();
             TestKnight.ReceiveAttack(TestArcher.AttackValue);
 
-        }*/
+        }
 
         [Test]
 
