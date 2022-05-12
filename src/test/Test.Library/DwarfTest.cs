@@ -76,13 +76,15 @@ namespace Test.Library
         {
             Wizard wizard1 = new Wizard("Test");
             wizard1.Staff = new Staff();
-            wizard1.SpellsBook = new SpellsBook();
+            SpellsBook book = new SpellsBook();
+            book.Spells = new Spell[]{ new Spell() };
+            wizard1.SpellsBook = book;
             Dwarf TestDwarf = new Dwarf("Test");
             TestDwarf.Axe = new Axe();
             TestDwarf.Helmet = new Helmet();
             TestDwarf.RecieveAttack(wizard1);
             int health = TestDwarf.Health;
-            int expected = 100;
+            int expected = 0;
             Assert.AreEqual(expected,health);
         }
 

@@ -52,7 +52,7 @@ namespace Test.Library
             TestArcher.Helmet = new Helmet();
             TestArcher.RecieveAttack(TestDwarf);
             int health = TestArcher.Health;
-            int expected = 100;
+            int expected = 93;
             Assert.AreEqual(expected,health);
         }
 
@@ -77,15 +77,16 @@ namespace Test.Library
         public void ArcherAttackedByWizard()
         {
             Wizard wizard1 = new Wizard("Test");
-            wizard1.SpellsBook = new SpellsBook();
-            wizard1.SpellsBook.Spells = new Spell[]{ new Spell() };
-            Staff staff = new Staff();
+            SpellsBook book = new SpellsBook();
+            book.Spells = new Spell[]{ new Spell() };
+            wizard1.SpellsBook = book;
+            wizard1.Staff = new Staff();
             Archer TestArcher = new Archer("Test");
             TestArcher.Bow = new Bow();
             TestArcher.Helmet = new Helmet();
             TestArcher.RecieveAttack(wizard1);
             int health = TestArcher.Health;
-            int expected = 100;
+            int expected = 0;
             Assert.AreEqual(expected,health);
         }
 
