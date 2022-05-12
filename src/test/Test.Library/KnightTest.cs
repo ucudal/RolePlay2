@@ -47,26 +47,66 @@ namespace Test.Library
         public void KnightAttackedByArcher()
         {
             Knight TestKnight = new Knight("Test");
+            TestKnight.Shield = new Shield();
+            TestKnight.Armor = new Armor();
             IItem sword = new Sword();
-            IItem shield = new Shield();
-            IItem armor = new Armor();
             Archer TestArcher = new Archer("Test");
-            IItem bow = new Bow();
             TestArcher.Bow = new Bow();
-            IItem helmet = new Helmet();
-            TestKnight.ReceiveAttack(TestArcher);
-
+            TestKnight.RecieveAttack(TestArcher);
+            int health = TestKnight.Health;
+            int expected = 100;
+            Assert.AreEqual(expected,health);
         }
+
+        [Test]
+
+        public void KnightAttackedByDwarf()
+        {
+            Knight TestKnight = new Knight("Test");
+            TestKnight.Shield = new Shield();
+            TestKnight.Armor = new Armor();
+            IItem sword = new Sword();
+            Dwarf TestDwarf = new Dwarf("Test");
+            IItem axe = new Axe();
+            IItem helmet = new Helmet();
+            TestKnight.RecieveAttack(TestDwarf);
+            int health = TestKnight.Health;
+            int expected = 100;
+            Assert.AreEqual(expected,health);
+        }
+
+        [Test]
+        public void KnightAttakedByWizard()
+        {
+            Wizard wizard1 = new Wizard("Test");
+            wizard1.Staff = new Staff();
+            wizard1.SpellsBook = new SpellsBook();
+            Knight TestKnight = new Knight("Test");
+            TestKnight.Sword = new Sword();
+            TestKnight.RecieveAttack(wizard1);
+            int health = TestKnight.Health;
+            int expected = 100;
+            Assert.AreEqual(expected,health);
+        }
+
 
         [Test]
 
         public void CureKnight()
         {
             Knight TestKnight = new Knight("Test");
+            TestKnight.Shield = new Shield();
+            TestKnight.Armor = new Armor();
             IItem sword = new Sword();
-            IItem shield = new Shield();
-            IItem armor = new Armor();
+            Archer TestArcher = new Archer("Test");
+            TestArcher.Bow = new Bow();
+            TestKnight.RecieveAttack(TestArcher);
             TestKnight.Cure();
+            int health = TestKnight.Health;
+            int expected = 100;
+            Assert.AreEqual(expected,health);
         }
+
     }
+
 }

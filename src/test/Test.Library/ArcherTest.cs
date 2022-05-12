@@ -41,5 +41,70 @@ namespace Test.Library
             Assert.AreEqual(expected,defense);
         }
 
+        public void ArcherAttackedByDwarf()
+        {
+            Dwarf TestDwarf = new Dwarf("Test");
+            TestDwarf.Axe = new Axe();
+            TestDwarf.Helmet = new Helmet();
+            Archer TestArcher = new Archer("Test");
+            TestArcher.Bow = new Bow();
+            TestArcher.Helmet = new Helmet();
+            TestArcher.RecieveAttack(TestDwarf);
+            int health = TestArcher.Health;
+            int expected = 100;
+            Assert.AreEqual(expected,health);
+        }
+
+        [Test]
+
+        public void ArcherAttackedByKnight()
+        {
+            Knight TestKnight = new Knight("Test");
+            TestKnight.Shield = new Shield();
+            TestKnight.Armor = new Armor();
+            TestKnight.Sword = new Sword();
+            Archer TestArcher = new Archer("Test");
+            TestArcher.Bow = new Bow();
+            TestArcher.Helmet = new Helmet();
+            TestArcher.RecieveAttack(TestKnight);
+            int health = TestKnight.Health;
+            int expected = 100;
+            Assert.AreEqual(expected,health);
+        }
+
+        [Test]
+        public void ArcherAttackedByWizard()
+        {
+            Wizard wizard1 = new Wizard("Test");
+            wizard1.SpellsBook = new SpellsBook();
+            wizard1.SpellsBook.Spells = new Spell[]{ new Spell() };
+            Staff staff = new Staff();
+            Archer TestArcher = new Archer("Test");
+            TestArcher.Bow = new Bow();
+            TestArcher.Helmet = new Helmet();
+            TestArcher.RecieveAttack(wizard1);
+            int health = TestArcher.Health;
+            int expected = 100;
+            Assert.AreEqual(expected,health);
+        }
+
+        [Test]
+        public void CureArcher()
+        {
+            Dwarf TestDwarf = new Dwarf("Test");
+            TestDwarf.Axe = new Axe();
+            TestDwarf.Helmet = new Helmet();
+            Archer TestArcher = new Archer("Test");
+            TestArcher.Bow = new Bow();
+            TestArcher.Helmet = new Helmet();
+            TestArcher.RecieveAttack(TestDwarf);
+            TestArcher.Cure();
+            int health = TestArcher.Health;
+            int expected = 100;
+            Assert.AreEqual(expected,health);
+        }
+
+        
+
     }
 }
