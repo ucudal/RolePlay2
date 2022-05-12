@@ -17,10 +17,10 @@ namespace Test.Library
         {
             Wizard wizard = new Wizard("Pedro");
             SpellsBook spellbook = new SpellsBook();
+            spellbook.Spells = new Spell[]{ new Spell() };
             Staff staff = new Staff();
             wizard.SpellsBook = spellbook;
-
-            spellbook.Spells = new Spell[]{ new Spell() };
+            wizard.Staff = staff;
 
             Assert.AreEqual(spellbook.AttackValue + staff.AttackValue, wizard.AttackValue);
         }
@@ -28,60 +28,79 @@ namespace Test.Library
         [Test]
         public void DefenseValueTest() //Verifico la defensa total del Wizard.
         {
-            IItem spellbook = new SpellsBook();
-            IItem staff = new Staff();
+            Wizard wizard = new Wizard("Pedro");
+            SpellsBook spellbook = new SpellsBook();
+            spellbook.Spells = new Spell[]{ new Spell() };
+            Staff staff = new Staff();
+            wizard.SpellsBook = spellbook;
+            wizard.Staff = staff;
 
-            Assert.AreEqual(170, spellbook.DefenseValue + staff.DefenseValue);
+            Assert.AreEqual(spellbook.DefenseValue + staff.DefenseValue, wizard.DefenseValue);
         }
 
         [Test]
-        public void HealthTest() //Verifico la salud total del Wizard.
+        public void WizardAttackedByArcher() //Verifico el ataque del Archer al Wizard.
         {
-            ICharacter wizard = new Wizard("Pedro");
-    
-            Assert.AreEqual(100, wizard.Health);
+            Wizard wizard1 = new Wizard("Test");
+            wizard1.Staff = new Staff();
+            SpellsBook book = new SpellsBook();
+            book.Spells = new Spell[]{ new Spell() };
+            wizard1.SpellsBook = book;
+            Archer TestArcher = new Archer("Test");
+            TestArcher.Bow = new Bow();
+            wizard1.RecieveAttack(TestArcher);
+            int health = wizard1.Health;
+            int expected = 100;
+            Assert.AreEqual(expected,health);
+        }
+
+         [Test]
+        public void WizardAttackedByDwarf() //Verifico el ataque del Dwarf al Wizard.
+        {
+            Wizard wizard1 = new Wizard("Test");
+            wizard1.Staff = new Staff();
+            SpellsBook book = new SpellsBook();
+            book.Spells = new Spell[]{ new Spell() };
+            wizard1.SpellsBook = book;
+            Dwarf TestWizard = new Dwarf("Test");
+            TestWizard.Axe = new Axe();
+            wizard1.RecieveAttack(TestWizard);
+            int health = wizard1.Health;
+            int expected = 100;
+            Assert.AreEqual(expected,health);
         }
 
         [Test]
-        public void RecieveAttackFromKnightTest() //Verifico cuando el Wizard recibe un ataque, en este caso lo ataca un Knight (tiene un item sword 20 de daño).
+        public void WizardAttackedByKnight() //Verifico el ataque del Knight al Wizard.
         {
-            ICharacter attacker = new Knight("James");
-            ICharacter wizard = new Wizard("Pedro");
-            wizard.RecieveAttack(attacker);
-    
-            Assert.AreEqual(80, wizard.Health);
+            Wizard wizard1 = new Wizard("Test");
+            wizard1.Staff = new Staff();
+            SpellsBook book = new SpellsBook();
+            book.Spells = new Spell[]{ new Spell() };
+            wizard1.SpellsBook = book;
+            Knight TestKnight = new Knight("Test");
+            TestKnight.Sword = new Sword();
+            wizard1.RecieveAttack(TestKnight);
+            int health = wizard1.Health;
+            int expected = 100;
+            Assert.AreEqual(expected,health);
         }
-
         [Test]
-        public void RecieveAttackFromDwarfTest() //Verifico cuando el Wizard recibe un ataque, en este caso lo ataca un Dward (tiene un item axe 25 de daño).
+        public void CureWizard() //Curar al Wizard.
         {
-            ICharacter attacker = new Dwarf("Jane");
-            ICharacter wizard = new Wizard("Pedro");
-            wizard.RecieveAttack(attacker);
-    
-            Assert.AreEqual(75, wizard.Health);
+            Wizard TestWizard = new Wizard("Test");
+            TestWizard.Staff = new Staff();
+            SpellsBook book = new SpellsBook();
+            book.Spells = new Spell[]{ new Spell() };
+            TestWizard.SpellsBook = book;
+            Archer TestArcher = new Archer("Test");
+            TestArcher.Bow = new Bow();
+            TestWizard.RecieveAttack(TestArcher);
+            TestWizard.Cure();
+            int health = TestWizard.Health;
+            int expected = 100;
+            Assert.AreEqual(expected,health);
         }
 
-        [Test]
-        public void RecieveAttackFromArcherTest() //Verifico cuando el Wizard recibe un ataque, en este caso lo ataca un Archer (tiene un item bow 15 de daño).
-        {
-            ICharacter attacker = new Archer("Freya");
-            ICharacter wizard = new Wizard("Pedro");
-            wizard.RecieveAttack(attacker);
-    
-            Assert.AreEqual(85, wizard.Health);
-        }
-
-        [Test]
-        public void CureTest() //Verifico cuando el Wizard se cura.
-        {
-            ICharacter attacker = new Archer("Freya");
-            ICharacter wizard = new Wizard("Pedro");
-            wizard.RecieveAttack(attacker);
-
-            wizard.Cure();
-    
-            Assert.AreEqual(100, wizard.Health);
-        }
-    }
+     }
 }
