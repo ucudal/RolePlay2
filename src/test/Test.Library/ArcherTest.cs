@@ -41,6 +41,7 @@ namespace Test.Library
             Assert.AreEqual(expected,defense);
         }
 
+        [Test]
         public void ArcherAttackedByDwarf()
         {
             Dwarf TestDwarf = new Dwarf("Test");
@@ -103,8 +104,6 @@ namespace Test.Library
             int expected = 100;
             Assert.AreEqual(expected,health);
         }
-
-        
 
     }
 }
